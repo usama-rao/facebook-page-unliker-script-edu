@@ -1,20 +1,34 @@
 (async () => {
   const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-  const buttons = Array.from(document.querySelectorAll('div[aria-label="Following"]'));
-  console.log(`Found ${buttons.length} pages to unlike.`);
+  const scrollToBottom = async () => {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    await delay(2000);
+  };
 
-  for (let i = 0; i < buttons.length; i++) {
-    try {
-      buttons[i].click();
-      console.log(`Unliked page ${i + 1}`);
-      await delay(1500); // delay to avoid detection
-    } catch (err) {
-      console.error(`Error at page ${i + 1}:`, err);
-    }
-  }
+  const getButtons = () =>
+    Array.from(document.querySelectorAll('div[aria-label="Following"]'))
+      .filter(btn => !btn.dataset.clicked); // skip already clicked
 
-  console.log('Waiting 100 seconds before reloading the page...');
-  await delay(100000); // wait for 100 seconds
-  location.reload();
-})();
+  // Set hard refresh after 150 seconds from script start
+  setTimeout(() => {
+    console.log('⏰ 150 seconds passed. Hard refreshing page...');
+    window.location.href = window.location.href;
+  }, 150000);
+
+  console.log('⌛ Waiting 5 seconds before starting...');
+  await delay(5000);
+
+  // Initial scroll (once)
+  console.log('🔽 Initial scroll 1/1...');
+  await scrollToBottom();
+
+  let unlikedCount = 0;
+
+  while (unlikedCount < 100) {
+    const buttons = getButtons();
+
+    if (buttons.length === 0) {
+      console.log('🔄 No new buttons found. Scrolling again...');
+      await scrollToBottom();
+      await delay(5000);

@@ -36,41 +36,8 @@ Automate unliking Facebook pages by clicking "Following" buttons on your liked p
 
 ---
 
-## ❗ Disclaimer
-
-- This tool is for **educational purposes only**
-- Misuse may violate Facebook's Terms of Service
-- You are fully responsible for how you use it
-
-
-
----
-
-## Disclaimer
-
-This project is intended for educational and personal use only.  
-It is not affiliated with or endorsed by Facebook.  
-Use responsibly and at your own risk.
-
----
-
 ## License
 
 MIT License – Free for personal and educational use with attribution.
-
-
-
-
-
-## Auto-Scrolling + Reload Version
-
-This version of the script:
-
-- Scrolls down automatically to load more entries
-- Unlikes up to 100 pages per run
-- Reloads the page after 100 unlikes (to refresh content and avoid memory issues)
-
-**Instructions remain the same** — paste this version into the browser console at  
-[https://www.facebook.com/me/allactivity?category=pages_likes](https://www.facebook.com/me/allactivity?category=pages_likes)
 
 

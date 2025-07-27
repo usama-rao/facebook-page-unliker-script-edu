@@ -8,13 +8,13 @@
 
   const getButtons = () =>
     Array.from(document.querySelectorAll('div[aria-label="Following"]'))
-      .filter(btn => !btn.dataset.clicked); // skip already clicked
+      .filter(btn => !btn.dataset.clicked); // Skip already clicked
 
-  // Set hard refresh after 150 seconds from script start
+  // Set hard refresh after 500 seconds
   setTimeout(() => {
-    console.log('150 seconds passed. Hard refreshing page...');
-    window.location.href = window.location.href;
-  }, 150000);
+    console.log('500 seconds passed. Hard refreshing page...');
+    location.reload(true); // Hard refresh (Ctrl + F5 equivalent)
+  }, 500000);
 
   console.log('Waiting 5 seconds before starting...');
   await delay(5000);
@@ -25,7 +25,7 @@
 
   let unlikedCount = 0;
 
-  while (unlikedCount < 100) {
+  while (unlikedCount < 250) {
     const buttons = getButtons();
 
     if (buttons.length === 0) {
@@ -35,17 +35,18 @@
       continue;
     }
 
-    for (let i = 0; i < buttons.length && unlikedCount < 100; i++) {
+    for (let i = 0; i < buttons.length && unlikedCount < 250; i++) {
       try {
         const btn = buttons[i];
-        btn.dataset.clicked = 'true';
+        btn.dataset.clicked = 'true'; // Mark before action
         btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        await delay(500);
         btn.click();
         console.log(`Unliked page ${unlikedCount + 1}`);
         unlikedCount++;
         await delay(1500);
 
-        if (unlikedCount % 20 === 0 && unlikedCount < 100) {
+        if (unlikedCount % 20 === 0 && unlikedCount < 250) {
           console.log(`Reached ${unlikedCount} unlikes. Scrolling for more...`);
           await scrollToBottom();
           await delay(10000); // Wait for new content to load
@@ -57,5 +58,5 @@
     }
   }
 
-  console.log('Done unliking 100 pages. Waiting for hard refresh if not already triggered...');
+  console.log('Done unliking 250 pages. Waiting for hard refresh if not already triggered...');
 })();

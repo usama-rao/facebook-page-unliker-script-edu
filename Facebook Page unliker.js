@@ -8,24 +8,35 @@
 
   const getButtons = () =>
     Array.from(document.querySelectorAll('div[aria-label="Following"]'))
-      .filter(btn => !btn.dataset.clicked); // Skip already clicked
+      .filter(btn => !btn.dataset.clicked);
 
-  // Set hard refresh after 500 seconds
+  let unlikedCount = 0;
+  const maxUnlikes = 250;
+  const startTime = Date.now();
+  let lastScroll = Date.now();
+
+  // Hard refresh after 70 seconds
   setTimeout(() => {
-    console.log('500 seconds passed. Hard refreshing page...');
-    location.reload(true); // Hard refresh (Ctrl + F5 equivalent)
-  }, 500000);
+    console.log('70 seconds passed. Hard refreshing page...');
+    window.location.href = window.location.href;
+  }, 70000);
 
   console.log('Waiting 5 seconds before starting...');
   await delay(5000);
 
-  // Initial scroll (once)
-  console.log('Initial scroll 1/1...');
+  console.log('Initial scroll...');
   await scrollToBottom();
 
-  let unlikedCount = 0;
+  while (unlikedCount < maxUnlikes) {
+    const now = Date.now();
 
-  while (unlikedCount < 250) {
+    if ((now - lastScroll) >= 30000) {
+      console.log('30 seconds passed. Scrolling to load more pages...');
+      await scrollToBottom();
+      await delay(10000);
+      lastScroll = Date.now();
+    }
+
     const buttons = getButtons();
 
     if (buttons.length === 0) {
@@ -35,28 +46,21 @@
       continue;
     }
 
-    for (let i = 0; i < buttons.length && unlikedCount < 250; i++) {
+    for (let i = 0; i < buttons.length && unlikedCount < maxUnlikes; i++) {
       try {
         const btn = buttons[i];
-        btn.dataset.clicked = 'true'; // Mark before action
+        btn.dataset.clicked = 'true';
         btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        await delay(500);
         btn.click();
         console.log(`Unliked page ${unlikedCount + 1}`);
         unlikedCount++;
         await delay(1500);
-
-        if (unlikedCount % 20 === 0 && unlikedCount < 250) {
-          console.log(`Reached ${unlikedCount} unlikes. Scrolling for more...`);
-          await scrollToBottom();
-          await delay(10000); // Wait for new content to load
-        }
       } catch (err) {
-        console.error(`Error unliking at index ${i}:`, err);
+        console.error(`Error at index ${i}:`, err);
         await delay(1000);
       }
     }
   }
 
-  console.log('Done unliking 250 pages. Waiting for hard refresh if not already triggered...');
+  console.log(`Unliked ${unlikedCount} pages. Script complete or waiting for refresh.`);
 })();

@@ -1,42 +1,40 @@
 # Facebook Page Auto-Unliker (Educational Use Only)
 
-This script automates unliking Facebook pages by simulating clicks on the **"Following"** buttons on your Liked Pages or Activity Log.
+This script helps you automatically unlike Facebook pages by simulating clicks on the "Following" buttons.
 
 ## Features
 
 - Waits **5 seconds** before starting
-- Scrolls down **1 time initially** to load more pages
-- Unlikes up to **250 pages automatically**
-- After every **20 unlikes**:
-  - Scrolls down to load more
-  - Waits **10 seconds** before resuming
-- Automatically triggers a **hard refresh (Ctrl + F5)** after **500 seconds** from script start to handle stuck/slow pages
+- Scrolls once initially to load more pages
+- Unlikes up to **250 pages**
+- Scrolls again every **30 seconds**
+- Waits **10 seconds** after scroll to allow new content to load
+- Auto hard refresh after **70 seconds** (in case of issues or freezing)
+- Skips already unliked pages to prevent duplicates
 
 ## How to Use
 
-1. **Go to:**
-   - [https://www.facebook.com/pages/?category=liked](https://www.facebook.com/pages/?category=liked) or
-2. Open the browser **Developer Console**:
-   - Right-click the page → Click **Inspect**
-   - Go to the **Console** tab
-3. **Paste the full script** into the console and press **Enter**
+1. Open **Facebook Liked Pages** ohttps://www.facebook.com/pages/?category=liked&ref=bookmarks
+2. Open your browser's **Developer Console**
+   - Right-click anywhere > Inspect > Console tab
+3. Paste the script and press **Enter**
 4. The script will:
-   - Wait 5 seconds
-   - Scroll once
-   - Begin unliking pages
-   - Refresh the page after 500 seconds (if needed)
+   - Start unliking pages
+   - Scroll automatically to load more
+   - Refresh the page if needed after 70 seconds
 
-## Notes
+## Troubleshooting
 
-- If Facebook pages or buttons are not loading properly, the script will **refresh the page automatically** after a timeout
-- It avoids clicking the same buttons twice by marking already processed elements
+- If pages repeat, make sure you're using the correct section
+- If nothing unlikes, make sure buttons are loaded
+- Refresh the page (Ctrl + F5) manually if needed
 
 ## Disclaimer
 
-- This script is for **educational purposes only**
-- Misuse may violate Facebook's Terms of Service
-- You are fully responsible for any actions taken using this script
+- For **educational use only**
+- Use at your own risk. May violate Facebook Terms
+- You are responsible for how you use this script
 
 ## License
 
-MIT License – Free to use for personal and educational purposes with attribution.
+MIT License – Free to use and share for personal and learning purposes.

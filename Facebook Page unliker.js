@@ -15,11 +15,11 @@
   const startTime = Date.now();
   let lastScroll = Date.now();
 
-  // Hard refresh after 70 seconds
+  // Hard refresh after 700 seconds
   setTimeout(() => {
-    console.log('70 seconds passed. Hard refreshing page...');
+    console.log('700 seconds passed. Hard refreshing page...');
     window.location.href = window.location.href;
-  }, 70000);
+  }, 700000);
 
   console.log('Waiting 5 seconds before starting...');
   await delay(5000);
@@ -30,8 +30,8 @@
   while (unlikedCount < maxUnlikes) {
     const now = Date.now();
 
-    if ((now - lastScroll) >= 30000) {
-      console.log('30 seconds passed. Scrolling to load more pages...');
+    if ((now - lastScroll) >= 40000) {
+      console.log('40 seconds passed. Scrolling to load more pages...');
       await scrollToBottom();
       await delay(10000);
       lastScroll = Date.now();

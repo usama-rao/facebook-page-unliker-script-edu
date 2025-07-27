@@ -1,40 +1,39 @@
 # Facebook Page Auto-Unliker (Educational Use Only)
 
-This script helps you automatically unlike Facebook pages by simulating clicks on the "Following" buttons.
+This script automatically unlikes Facebook pages by clicking "Following" buttons on your liked pages list.
 
 ## Features
 
-- Waits **5 seconds** before starting
-- Scrolls once initially to load more pages
-- Unlikes up to **250 pages**
-- Scrolls again every **30 seconds**
-- Waits **10 seconds** after scroll to allow new content to load
-- Auto hard refresh after **70 seconds** (in case of issues or freezing)
-- Skips already unliked pages to prevent duplicates
+- Waits 5 seconds before starting
+- Scrolls once at the beginning
+- Unlikes up to 250 pages
+- Scrolls every 40 seconds to load more pages
+- Waits 10 seconds after each scroll
+- Auto hard refresh after 700 seconds (11 minutes 40 seconds)
+- Skips already unliked pages to avoid duplicates
 
 ## How to Use
 
-1. Open **Facebook Liked Pages** ohttps://www.facebook.com/pages/?category=liked&ref=bookmarks
-2. Open your browser's **Developer Console**
-   - Right-click anywhere > Inspect > Console tab
-3. Paste the script and press **Enter**
+1. Go to [Facebook Liked Pages](https://www.facebook.com/pages/?category=liked&ref=bookmarks)
+2. Open Developer Console:
+   - Right-click on the page → Inspect → Go to **Console** tab
+3. Paste the full script above and press **Enter**
 4. The script will:
    - Start unliking pages
-   - Scroll automatically to load more
-   - Refresh the page if needed after 70 seconds
+   - Scroll automatically every 40 seconds
+   - Hard refresh the page after 700 seconds
 
-## Troubleshooting
+## Notes
 
-- If pages repeat, make sure you're using the correct section
-- If nothing unlikes, make sure buttons are loaded
-- Refresh the page (Ctrl + F5) manually if needed
+- If the script stops or starts repeating pages, refresh the page manually using **Ctrl + F5**
+- Only works when buttons are fully visible
 
 ## Disclaimer
 
 - For **educational use only**
-- Use at your own risk. May violate Facebook Terms
 - You are responsible for how you use this script
+- Misuse may violate Facebook's Terms of Service
 
 ## License
 
-MIT License – Free to use and share for personal and learning purposes.
+MIT License – Free for personal and educational use

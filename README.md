@@ -15,8 +15,7 @@ This script automates unliking Facebook pages by simulating clicks on the **"Fol
 ## How to Use
 
 1. **Go to:**
-   - [https://www.facebook.com/pages](https://www.facebook.com/pages) or
-   - Your **Activity Log > Likes and Reactions** section
+   - [https://www.facebook.com/pages/?category=liked](https://www.facebook.com/pages/?category=liked) or
 2. Open the browser **Developer Console**:
    - Right-click the page → Click **Inspect**
    - Go to the **Console** tab

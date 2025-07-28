@@ -62,5 +62,5 @@
     }
   }
 
-  console.log(`Unliked ${unlikedCount} pages. Script complete or waiting for refresh.`);
+  console.log(`Unliked ${unlikedCount} pages. Script complete or waiting for refresh!.`);
 })();

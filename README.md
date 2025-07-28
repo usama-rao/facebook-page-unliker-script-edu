@@ -2,7 +2,7 @@
 
 This script automatically unlikes Facebook pages by clicking "Following" buttons on your liked pages list.
 
-## Features
+## Features - Final version!
 
 - Waits 5 seconds before starting
 - Scrolls once at the beginning
